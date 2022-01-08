@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="adding-goods">
-      <h1 class="adding-good__title">
-        <form accept-charset="UTF-8" class="form">
+      <form class="form">
           <div class="form__field field">
             <h3 class="field__name">Наименование товара</h3>
             <label class="field__label">
@@ -23,8 +21,6 @@
           </div>
           <button type="submit">Добавить товар</button>
         </form>
-      </h1>
-    </div>
   </div>
 </template>
 
