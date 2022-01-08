@@ -1,50 +1,53 @@
 <template>
   <div class="wrapper">
-      <form class="adding-goods">
-          <div :class="['adding-goods__field', 'field', {'required': true}]">
-            <h3 class="field__name">Наименование товара</h3>
-            <label class="field__label">
-              <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите название товара">
-            </label>
-            <div class="field__error" v-if="false">Поле является обязательным</div>
-          </div>
-          <div class="adding-goods__field field">
-            <h3 class="field__name">Описание товара</h3>
-            <label class="field__label">
-              <textarea class="field__textarea" type="text" placeholder="Введите описание товара"></textarea>
-            </label>
-          </div>
-          <div :class="['adding-goods__field', 'field', {'required': true}]">
-            <h3 class="field__name">Ссылка на изображение товара</h3>
-            <label class="field__label">
-              <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите ссылку">
-            </label>
-            <div class="field__error" v-if="false">Поле является обязательным</div>
-          </div>
-          <div :class="['adding-goods__field', 'field', {'required': true}]">
-            <h3 class="field__name">Цена товара</h3>
-            <label class="field__label">
-              <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите цену">
-            </label>
-            <div class="field__error" v-if="false">Поле является обязательным</div>
-          </div>
-          <button :class="['adding-goods__submit', {'disabled': false}]" type="submit">Добавить товар</button>
-      </form>
+    <form class="adding-goods">
+      <div :class="['adding-goods__field', 'field', {'required': true}]">
+        <h3 class="field__name">Наименование товара</h3>
+          <label class="field__label">
+            <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите название товара">
+          </label>
+          <div class="field__error" v-if="false">Поле является обязательным</div>
+        </div>
+        <div class="adding-goods__field field">
+          <h3 class="field__name">Описание товара</h3>
+          <label class="field__label">
+            <textarea class="field__textarea" type="text" placeholder="Введите описание товара"></textarea>
+          </label>
+        </div>
+        <div :class="['adding-goods__field', 'field', {'required': true}]">
+          <h3 class="field__name">Ссылка на изображение товара</h3>
+          <label class="field__label">
+            <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите ссылку">
+          </label>
+          <div class="field__error" v-if="false">Поле является обязательным</div>
+        </div>
+        <div :class="['adding-goods__field', 'field', {'required': true}]">
+          <h3 class="field__name">Цена товара</h3>
+          <label class="field__label">
+            <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите цену">
+          </label>
+          <div class="field__error" v-if="false">Поле является обязательным</div>
+        </div>
+        <button :class="['adding-goods__submit', {'disabled': false}]" type="submit">Добавить товар</button>
+    </form>
 
-    <div class="goods">
-      <img src="../assets/img/test.jpg" alt="picture" class="goods__picture">
-      <div class="goods__content">
-        <h2 class="goods__name">Наименование товара</h2>
-        <h3 class="goods__desc">
-          Довольно-таки интересное описание товара в несколько строк.
-          Довольно-таки интересное описание товара в несколько строк
-        </h3>
-        <h4 class="goods__price">10 000 руб.</h4>
-      </div>
-      <div class="goods__delete">
-        <Delete />
+    <div class="goods-list">
+      <div class="goods" v-for="n in 30" :key="n">
+        <img src="../assets/img/test.jpg" alt="picture" class="goods__picture">
+        <div class="goods__content">
+          <h2 class="goods__name">Наименование товара</h2>
+          <h3 class="goods__desc">
+            Довольно-таки интересное описание товара в несколько строк.
+            Довольно-таки интересное описание товара в несколько строк
+          </h3>
+          <h4 class="goods__price">10 000 руб.</h4>
+        </div>
+        <div class="goods__delete">
+          <Delete />
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -253,5 +256,11 @@ export default {
 
     color: #3F3F3F;
   }
+}
+
+.goods-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 </style>
