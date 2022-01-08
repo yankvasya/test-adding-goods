@@ -1,26 +1,35 @@
 <template>
   <div class="wrapper">
       <form class="adding-goods">
-          <div class="adding-goods__field field">
+          <div :class="['adding-goods__field', 'field', {'required': true}]">
             <h3 class="field__name">Наименование товара</h3>
             <label class="field__label">
-              <input class="field__input" type="text" placeholder="Введите название товара">
+              <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите название товара">
             </label>
+            <div class="field__error" v-if="false">Поле является обязательным</div>
           </div>
           <div class="adding-goods__field field">
             <h3 class="field__name">Описание товара</h3>
             <label class="field__label">
-              <input class="field__input" type="text" placeholder="Введите описание товара">
+              <textarea class="field__textarea" type="text" placeholder="Введите описание товара"></textarea>
             </label>
           </div>
-          <div class="adding-goods__field field">
+          <div :class="['adding-goods__field', 'field', {'required': true}]">
+            <h3 class="field__name">Ссылка на изображение товара</h3>
+            <label class="field__label">
+              <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите ссылку">
+            </label>
+            <div class="field__error" v-if="false">Поле является обязательным</div>
+          </div>
+          <div :class="['adding-goods__field', 'field', {'required': true}]">
             <h3 class="field__name">Цена товара</h3>
             <label class="field__label">
-              <input class="field__input" type="text" placeholder="Введите цену">
+              <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите цену">
             </label>
+            <div class="field__error" v-if="false">Поле является обязательным</div>
           </div>
-          <button class="adding-goods__submit" type="submit">Добавить товар</button>
-        </form>
+          <button :class="['adding-goods__submit', {'disabled': false}]" type="submit">Добавить товар</button>
+      </form>
   </div>
 </template>
 
@@ -30,4 +39,121 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wrapper {
+  background: rgba(255, 254, 251, 0.8);
+}
+
+.adding-goods {
+  padding: 24px;
+
+  width: 332px;
+
+  background: #FFFEFB;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+
+  .field {
+    position: relative;
+
+    &__name {
+      position: relative;
+      display: inline-flex;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 10px;
+      line-height: 13px;
+      color: #49485E;
+    }
+
+    &__input, &__textarea {
+      margin-top: 4px;
+      padding: 10px 16px;
+      width: 284px;
+      background: #FFFEFB;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #3F3F3F;
+
+      &::placeholder {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 15px;
+        color: #B4B4B4;
+      }
+    }
+
+    &__input {
+      height: 36px;
+
+      &.required {
+        border: 1px solid #FF8484;
+      }
+    }
+
+    &__textarea {
+      resize: none;
+      height: 108px;
+    }
+
+    &:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    &.required {
+      .field__name:before {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        top: 1px;
+        right: -5px;
+
+        background: #FF8484;
+        border-radius: 4px;
+      }
+    }
+
+    &__error {
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 8px;
+      line-height: 10px;
+      letter-spacing: -0.02em;
+      color: #FF8484;
+    }
+  }
+
+  &__submit {
+    margin-top: 24px;
+    width: 284px;
+    height: 36px;
+    left: 56px;
+    top: 463px;
+
+    background: #7BAE73;
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+
+    &.disabled {
+      background: #EEEEEE;
+      color: #B4B4B4;
+    }
+  }
+}
+</style>
