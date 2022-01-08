@@ -1,25 +1,25 @@
 <template>
   <div class="wrapper">
-      <form class="form">
-          <div class="form__field field">
+      <form class="adding-goods">
+          <div class="adding-goods__field field">
             <h3 class="field__name">Наименование товара</h3>
             <label class="field__label">
-              <input type="text" placeholder="Введите название товара">
+              <input class="field__input" type="text" placeholder="Введите название товара">
             </label>
           </div>
-          <div class="form__field field">
+          <div class="adding-goods__field field">
             <h3 class="field__name">Описание товара</h3>
             <label class="field__label">
-              <input type="text" placeholder="Введите описание товара">
+              <input class="field__input" type="text" placeholder="Введите описание товара">
             </label>
           </div>
-          <div class="form__field field">
+          <div class="adding-goods__field field">
             <h3 class="field__name">Цена товара</h3>
             <label class="field__label">
-              <input type="text" placeholder="Введите цену">
+              <input class="field__input" type="text" placeholder="Введите цену">
             </label>
           </div>
-          <button type="submit">Добавить товар</button>
+          <button class="adding-goods__submit" type="submit">Добавить товар</button>
         </form>
   </div>
 </template>
