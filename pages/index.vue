@@ -1,8 +1,20 @@
 <template>
   <div class="wrapper">
-    <form class="adding-goods">
-      <div :class="['adding-goods__field', 'field', {'required': true}]">
-        <h3 class="field__name">Наименование товара</h3>
+    <header class="header">
+      <div class="container">
+        <h1 class="header__title">Добавление товара</h1>
+        <select class="toggler">
+          <option selected class="toggler__option" value="По умолчанию">По умолчанию</option>
+          <option class="toggler__option" value="Сначала дороже">Сначала дорогие</option>
+          <option class="toggler__option" value="Сначала дешевые">Сначала дешевые</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="main">
+      <form class="adding-goods">
+        <div :class="['adding-goods__field', 'field', {'required': true}]">
+          <h3 class="field__name">Наименование товара</h3>
           <label class="field__label">
             <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите название товара">
           </label>
@@ -29,25 +41,26 @@
           <div class="field__error" v-if="false">Поле является обязательным</div>
         </div>
         <button :class="['adding-goods__submit', {'disabled': false}]" type="submit">Добавить товар</button>
-    </form>
+      </form>
 
-    <div class="goods-list">
-      <div class="goods" v-for="n in 30" :key="n">
-        <img src="../assets/img/test.jpg" alt="picture" class="goods__picture">
-        <div class="goods__content">
-          <h2 class="goods__name">Наименование товара</h2>
-          <h3 class="goods__desc">
-            Довольно-таки интересное описание товара в несколько строк.
-            Довольно-таки интересное описание товара в несколько строк
-          </h3>
-          <h4 class="goods__price">10 000 руб.</h4>
-        </div>
-        <div class="goods__delete">
-          <Delete />
+      <div class="goods-list">
+        <div class="goods" v-for="n in 30" :key="n">
+          <img src="../assets/img/test.jpg" alt="picture" class="goods__picture">
+          <div class="goods__content">
+            <h2 class="goods__name">Наименование товара</h2>
+            <h3 class="goods__desc">
+              Довольно-таки интересное описание товара в несколько строк.
+              Довольно-таки интересное описание товара в несколько строк
+            </h3>
+            <h4 class="goods__price">10 000 руб.</h4>
+          </div>
+          <div class="goods__delete">
+            <Delete />
+          </div>
         </div>
       </div>
-    </div>
 
+    </main>
   </div>
 </template>
 
@@ -58,16 +71,69 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.toggler {
+  padding: 10px 16px;
+  background: #FFFEFB;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #B4B4B4;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
-  padding: 10px;
-  gap: 10px;
+  align-items: center;
+  flex: 1;
+  padding: 0 32px 0 32px;
+
+  width: 100%;
+  height: 83px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    max-width: 100%;
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    color: #3F3F3F;
+  }
+}
+
+.wrapper {
+  max-width: 1367px;
+  padding: 0 0 10px 0;
   background: rgba(255, 254, 251, 0.8);
 }
 
-.adding-goods {
-  padding: 24px;
+.main {
+  padding-top: 83px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
 
+.adding-goods {
+  left: 32px;
+  top: 83px;
+  position: fixed;
+  padding: 24px;
+  z-index: 3;
   width: 332px;
 
   background: #FFFEFB;
