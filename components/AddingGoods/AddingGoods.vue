@@ -14,7 +14,7 @@ export default {
         url: url.value
       }
 
-      this.$store.commit('goods/addGoods', data)
+     this.$store.commit('goods/addGoods', data)
      this.clearForm([name,desc,url,cost])
     },
     clearForm(elements) {

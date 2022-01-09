@@ -24,6 +24,25 @@ export default {
     goods () {
       return this.$store.state.goods.items
     }
+  },
+  methods: {
+    checkLocalStorage() {
+      return localStorage.getItem('goods');
+    },
+    getTestData() {
+      return [
+        {
+          name: 'Наименование товара',
+          desc: 'Довольно-таки интересное описание товара в несколько строк.' +
+          ' Довольно-таки интересное описание товара в несколько строк',
+          cost: 10000, url: 'https://i.ibb.co/0sMgSmv/test.jpg'
+        }
+      ]
+    }
+  },
+  created() {
+    const data = this.checkLocalStorage() || this.getTestData()
+    this.$store.commit('goods/loadGoods', data)
   }
 }
 </script>
