@@ -3,11 +3,7 @@
     <header class="header">
       <div class="container">
         <h1 class="header__title">Добавление товара</h1>
-        <select class="toggler">
-          <option selected class="toggler__option" value="По умолчанию">По умолчанию</option>
-          <option class="toggler__option" value="Сначала дороже">Сначала дорогие</option>
-          <option class="toggler__option" value="Сначала дешевые">Сначала дешевые</option>
-        </select>
+        <Toggler />
       </div>
     </header>
 
@@ -71,19 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.toggler {
-  padding: 10px 16px;
-  background: #FFFEFB;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 15px;
-  color: #B4B4B4;
-}
-
 .header {
   position: absolute;
   top: 0;
