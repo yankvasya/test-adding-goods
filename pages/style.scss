@@ -1,0 +1,27 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.wrapper {
+  max-width: 1367px;
+  padding: 0 0 10px 0;
+  background: rgba(255, 254, 251, 0.8);
+}
+
+.main {
+  padding-top: 83px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.adding-goods {
+  left: 32px;
+  top: 83px;
+  position: fixed;
+  z-index: 3;
+}
