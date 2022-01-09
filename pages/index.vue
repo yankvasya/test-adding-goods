@@ -4,7 +4,14 @@
     <main class="main">
       <AddingGoods />
       <GoodsList>
-        <Goods v-for="n in 30" :key="n" />
+        <Goods
+          v-for="({name,cost,desc,url}, npx) in this.goods"
+          :key="npx"
+          :name="name"
+          :desc="desc"
+          :cost="cost"
+          :url="url"
+        />
       </GoodsList>
     </main>
   </div>
@@ -12,7 +19,12 @@
 
 <script>
 export default {
-  name: 'Main'
+  name: 'Main',
+  computed: {
+    goods () {
+      return this.$store.state.goods.items
+    }
+  }
 }
 </script>
 

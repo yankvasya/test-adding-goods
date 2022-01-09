@@ -2,7 +2,13 @@
 
 <script>
 export default {
-  name: 'Goods'
+  name: 'Goods',
+  props: {
+    name: String,
+    desc: String,
+    url: String,
+    cost: String
+  }
 }
 </script>
 

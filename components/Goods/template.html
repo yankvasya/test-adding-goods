@@ -1,12 +1,9 @@
 <div class="goods">
-  <img src="../../assets/img/test.jpg" alt="picture" class="goods__picture">
+  <img :src="url" :alt="name" class="goods__picture">
   <div class="goods__content">
-    <h2 class="goods__name">Наименование товара</h2>
-    <h3 class="goods__desc">
-      Довольно-таки интересное описание товара в несколько строк.
-      Довольно-таки интересное описание товара в несколько строк
-    </h3>
-    <h4 class="goods__price">10 000 руб.</h4>
+    <h2 class="goods__name">{{name}}</h2>
+    <p class="goods__desc">{{desc}}</p>
+    <h4 class="goods__price">{{cost}}</h4>
   </div>
   <div class="goods__delete">
     <Delete />
