@@ -109,9 +109,13 @@
     letter-spacing: -0.02em;
     color: #FFFFFF;
 
+    transition: color .5s, background-color .5s;
+
     &.disabled {
       background: #EEEEEE;
       color: #B4B4B4;
+
+      transition: all .5s;
     }
   }
 }

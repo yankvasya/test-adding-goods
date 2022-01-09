@@ -33,18 +33,20 @@ export default {
       e.preventDefault()
 
       const data = e.target.elements
-      const { name, url, cost } = data
-      this.checkFormValues({name,url,cost}) && this.createGoods(data)
+      this.createGoods(data)
     },
-    checkFormValues(elements) {
-      let isValuesFull = true
+    checkFormValues(e) {
+      const { name, url, cost } = e.currentTarget.elements
+      const elements = { name, url, cost }
+
+      let isValuesEmpty = false
       for (const [_, input] of Object.entries(elements)) {
         if (!input.value) {
-          isValuesFull = false
+          isValuesEmpty = true
         }
       }
 
-      return isValuesFull
+      this.isValuesEmpty = isValuesEmpty
     },
     createGoods({ name, desc, url, cost }) {
       const data = {
