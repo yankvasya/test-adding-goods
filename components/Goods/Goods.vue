@@ -7,7 +7,13 @@ export default {
     name: String,
     desc: String,
     url: String,
-    cost: String
+    cost: Number
+  }
+  ,
+  methods: {
+    getCost() {
+      return `${this.cost.toLocaleString('ru')} руб.`
+    }
   }
 }
 </script>
