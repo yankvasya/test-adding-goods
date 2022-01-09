@@ -9,9 +9,9 @@
 
     <main class="main">
       <AddingGoods />
-      <div class="goods-list">
+      <GoodsList>
         <Goods v-for="n in 30" :key="n" />
-      </div>
+      </GoodsList>
     </main>
   </div>
 </template>
@@ -72,11 +72,5 @@ export default {
   top: 83px;
   position: fixed;
   z-index: 3;
-}
-
-.goods-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
 }
 </style>
