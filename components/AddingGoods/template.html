@@ -1,10 +1,17 @@
-<form class="adding-goods" @submit="createGoods">
+<form class="adding-goods" @submit="submitForm">
   <div :class="['adding-goods__field', 'field', {'required': true}]">
     <h3 class="field__name">Наименование товара</h3>
     <label class="field__label">
-      <input name="name" :class="['field__input', {'required': false}]" type="text" placeholder="Введите название товара">
+      <input
+        name="name"
+        :class="['field__input', {'required': values.name.warn}]"
+        type="text"
+        placeholder="Введите название товара"
+        autocomplete="off"
+        @input="valueChanged"
+      >
     </label>
-    <div class="field__error" v-if="false">Поле является обязательным</div>
+    <div class="field__error" v-if="values.name.warn">Поле является обязательным</div>
   </div>
   <div class="adding-goods__field field">
     <h3 class="field__name">Описание товара</h3>
@@ -15,16 +22,34 @@
   <div :class="['adding-goods__field', 'field', {'required': true}]">
     <h3 class="field__name">Ссылка на изображение товара</h3>
     <label class="field__label">
-      <input name="url" :class="['field__input', {'required': false}]" type="text" placeholder="Введите ссылку">
+      <input
+        name="url"
+        :class="['field__input', {'required': this.values.url.warn}]"
+        type="text"
+        placeholder="Введите ссылку"
+        autocomplete="off"
+      >
     </label>
-    <div class="field__error" v-if="false">Поле является обязательным</div>
+    <div class="field__error" v-if="this.values.url.warn">Поле является обязательным</div>
   </div>
   <div :class="['adding-goods__field', 'field', {'required': true}]">
     <h3 class="field__name">Цена товара</h3>
     <label class="field__label">
-      <input name="cost" :class="['field__input', {'required': false}]" type="text" placeholder="Введите цену">
+      <input
+        name="cost"
+        :class="['field__input', {'required': this.values.cost.warn}]"
+        type="number"
+        placeholder="Введите цену"
+        autocomplete="off"
+      >
     </label>
-    <div class="field__error" v-if="false">Поле является обязательным</div>
+    <div class="field__error" v-if="this.values.cost.warn">Поле является обязательным</div>
   </div>
-  <button :class="['adding-goods__submit', {'disabled': false}]" type="submit">Добавить товар</button>
+  <button
+    :class="['adding-goods__submit', {'disabled': isValuesEmpty }]"
+    type="submit"
+    :disabled="isValuesEmpty"
+  >
+    Добавить товар
+  </button>
 </form>

@@ -48,6 +48,12 @@
       &.required {
         border: 1px solid #FF8484;
       }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
 
     &__textarea {
