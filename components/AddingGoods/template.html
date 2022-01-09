@@ -1,28 +1,28 @@
-<form class="adding-goods">
+<form class="adding-goods" @submit="createGoods">
   <div :class="['adding-goods__field', 'field', {'required': true}]">
     <h3 class="field__name">Наименование товара</h3>
     <label class="field__label">
-      <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите название товара">
+      <input name="name" :class="['field__input', {'required': false}]" type="text" placeholder="Введите название товара">
     </label>
     <div class="field__error" v-if="false">Поле является обязательным</div>
   </div>
   <div class="adding-goods__field field">
     <h3 class="field__name">Описание товара</h3>
     <label class="field__label">
-      <textarea class="field__textarea" type="text" placeholder="Введите описание товара"></textarea>
+      <textarea name="desc" class="field__textarea" type="text" placeholder="Введите описание товара"></textarea>
     </label>
   </div>
   <div :class="['adding-goods__field', 'field', {'required': true}]">
     <h3 class="field__name">Ссылка на изображение товара</h3>
     <label class="field__label">
-      <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите ссылку">
+      <input name="url" :class="['field__input', {'required': false}]" type="text" placeholder="Введите ссылку">
     </label>
     <div class="field__error" v-if="false">Поле является обязательным</div>
   </div>
   <div :class="['adding-goods__field', 'field', {'required': true}]">
     <h3 class="field__name">Цена товара</h3>
     <label class="field__label">
-      <input :class="['field__input', {'required': false}]" type="text" placeholder="Введите цену">
+      <input name="cost" :class="['field__input', {'required': false}]" type="text" placeholder="Введите цену">
     </label>
     <div class="field__error" v-if="false">Поле является обязательным</div>
   </div>
