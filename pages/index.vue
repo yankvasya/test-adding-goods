@@ -5,12 +5,13 @@
       <AddingGoods />
       <GoodsList>
         <Goods
-          v-for="({name,cost,desc,url}, npx) in this.goods"
+          v-for="({name,cost,desc,url,date}, npx) in goods"
           :key="npx"
           :name="name"
           :desc="desc"
           :cost="cost"
           :url="url"
+          :date="date"
         />
       </GoodsList>
     </main>
@@ -20,8 +21,13 @@
 <script>
 export default {
   name: 'Main',
+  data() {
+    return {
+      goods: []
+    }
+  },
   computed: {
-    goods () {
+    defaultGoods () {
       return this.$store.state.goods.items
     }
   },
@@ -30,18 +36,22 @@ export default {
       return JSON.parse(localStorage.getItem('goods'));
     },
     getTestData() {
+      const date = Date.parse(`${new Date()}`)
       return [
         {
           name: 'Наименование товара',
           desc: 'Довольно-таки интересное описание товара в несколько строк.' +
           ' Довольно-таки интересное описание товара в несколько строк',
-          cost: 10000, url: 'https://i.ibb.co/0sMgSmv/test.jpg'
+          cost: 10000,
+          url: 'https://i.ibb.co/0sMgSmv/test.jpg',
+          date
         }
       ]
     }
   },
   created() {
     const data = this.checkLocalStorage() || this.getTestData()
+    this.goods = data
     this.$store.commit('goods/loadGoods', data)
   },
   updated() {

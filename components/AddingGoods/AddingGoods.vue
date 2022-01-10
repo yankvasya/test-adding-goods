@@ -49,15 +49,18 @@ export default {
       this.isValuesEmpty = isValuesEmpty
     },
     createGoods({ name, desc, url, cost }) {
+      const date = Date.parse(`${new Date()}`)
+
       const data = {
         name: name.value,
         cost: cost.value*1,
         desc: desc.value,
-        url: url.value
+        url: url.value,
+        date
       }
 
-     this.$store.commit('goods/addGoods', data)
-     this.clearForm([name,desc,url,cost])
+      this.$store.commit('goods/addGoods', data)
+      this.clearForm([name,desc,url,cost])
     },
     clearForm(elements) {
       for (let element of elements) {
