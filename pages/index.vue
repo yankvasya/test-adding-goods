@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     checkLocalStorage() {
-      return localStorage.getItem('goods');
+      return JSON.parse(localStorage.getItem('goods'));
     },
     getTestData() {
       return [
@@ -43,6 +43,10 @@ export default {
   created() {
     const data = this.checkLocalStorage() || this.getTestData()
     this.$store.commit('goods/loadGoods', data)
+  },
+  updated() {
+    const data = JSON.stringify(this.goods)
+    localStorage.setItem('goods', data)
   }
 }
 </script>
