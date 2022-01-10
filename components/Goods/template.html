@@ -7,7 +7,7 @@
     <p class="goods__desc">{{desc}}</p>
     <h4 class="goods__price">{{getCost()}}</h4>
   </div>
-  <div class="goods__delete">
+  <div class="goods__delete" @click="deleteGoods()">
     <Delete />
   </div>
 </div>

@@ -1,5 +1,6 @@
 export const state = () => ({
-  items: []
+  items: [],
+  filter: []
 })
 
 export const mutations = {
@@ -10,5 +11,8 @@ export const mutations = {
     state.items.push({
       ...payload
     })
+  },
+  deleteGoods(state, payload) {
+    state.items = state.items.filter(goods => goods.date !== payload)
   }
 }

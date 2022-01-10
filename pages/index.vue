@@ -12,6 +12,7 @@
           :cost="cost"
           :url="url"
           :date="date"
+          @deleteGoods="listChanged"
         />
       </GoodsList>
     </main>
@@ -21,6 +22,7 @@
 <script>
 export default {
   name: 'Main',
+  emits: ['deleteGoods'],
   data() {
     return {
       goods: []
@@ -47,6 +49,10 @@ export default {
           date
         }
       ]
+    },
+    listChanged() {
+      console.log(this.goods)
+      this.goods = this.defaultGoods
     }
   },
   created() {
@@ -56,6 +62,7 @@ export default {
   },
   updated() {
     const data = JSON.stringify(this.goods)
+    this.listChanged()
     localStorage.setItem('goods', data)
   }
 }
