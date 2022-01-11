@@ -55,6 +55,9 @@ export default {
     },
     listChanged() {
       switch (this.filter) {
+        case 'default':
+          this.$store.commit('goods/defaultList')
+          break
         case 'cheapFirst':
           this.$store.commit('goods/cheapFirst')
           break
