@@ -1,3 +1,5 @@
+@import '../../styles/vars';
+
 .adding-goods {
   padding: 24px;
   width: 332px;
@@ -99,7 +101,7 @@
     left: 56px;
     top: 463px;
 
-    background: #7BAE73;
+    background: $green;
     border-radius: 10px;
 
     font-style: normal;

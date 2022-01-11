@@ -1,27 +1,3 @@
-html {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-textarea::placeholder, input::placeholder {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-html, body, .wrapper {
-  width: 100%;
-  height: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  border: 1px solid transparent;
-  background: none;
-  outline: none;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
+@import 'base';
+@import 'vars';
+@import 'mixins';
