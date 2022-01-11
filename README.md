@@ -1,5 +1,5 @@
 # test-adding-goods
-[Текст задания](https://frontend-test.idalite.com/)
+[Текст задания](https://frontend-test.idalite.com/) \
 [Деплой](https://yankvasya.github.io/test-adding-goods/)
 
 ## Build Setup
