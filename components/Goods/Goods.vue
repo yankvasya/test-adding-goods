@@ -9,8 +9,12 @@ export default {
     url: String,
     cost: Number,
     date: Number
-  }
-  ,
+  },
+  data() {
+    return {
+      isImgLoaded: false
+    }
+  },
   methods: {
     getCost() {
       return `${this.cost.toLocaleString('ru')} руб.`
@@ -23,6 +27,9 @@ export default {
     changeLocalStorage() {
       const changeData = JSON.stringify(JSON.parse(localStorage.getItem('goods'))?.filter(({date}) => date !== this.date))
       localStorage.setItem('goods', changeData)
+    },
+    changeImgLoaded() {
+      this.isImgLoaded = true
     }
   }
 }

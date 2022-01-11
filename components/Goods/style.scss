@@ -38,6 +38,12 @@
     }
   }
 
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__picture, &__img {
     width: 332px;
     height: 200px;

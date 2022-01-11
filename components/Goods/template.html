@@ -1,6 +1,7 @@
 <div class="goods">
   <div class="goods__img">
-    <img :src="url" :alt="name" class="goods__picture">
+    <LoadingSpinner v-show="!isImgLoaded" />
+    <img :src="url" :alt="name" class="goods__picture" v-show="isImgLoaded" @load="changeImgLoaded">
   </div>
   <div class="goods__content">
     <h2 class="goods__name">{{name}}</h2>
