@@ -19,6 +19,9 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.16.5",
+    "@nuxtjs/eslint-config": "^8.0.0",
+    "eslint": "^8.6.0",
     "sass": "^1.47.0",
     "sass-loader": "10.1.1"
   }

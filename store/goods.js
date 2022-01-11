@@ -4,31 +4,31 @@ export const state = () => ({
 })
 
 export const mutations = {
-  loadGoods(state, payload) {
+  loadGoods (state, payload) {
     state.items = payload
   },
-  addGoods(state, payload) {
+  addGoods (state, payload) {
     state.items.push({
       ...payload
     })
   },
-  deleteGoods(state, payload) {
+  deleteGoods (state, payload) {
     state.items = state.items.filter(goods => goods.date !== payload)
   },
-  changeFilter(state, payload) {
+  changeFilter (state, payload) {
     state.filter = payload
   },
-  defaultList: state => {
-    state.items.sort((a,b) => a.date - b.date)
+  defaultList: (state) => {
+    state.items.sort((a, b) => a.date - b.date)
   },
-  cheapFirst: state => {
-    state.items.sort((a,b) => a.cost - b.cost)
+  cheapFirst: (state) => {
+    state.items.sort((a, b) => a.cost - b.cost)
   },
-  dearFirst: state => {
-    state.items.sort((a,b) => b.cost - a.cost)
+  dearFirst: (state) => {
+    state.items.sort((a, b) => b.cost - a.cost)
   },
-  byName: state => {
-    state.items.sort((a,b) => a.name.localeCompare(b.name))
+  byName: (state) => {
+    state.items.sort((a, b) => a.name.localeCompare(b.name))
   }
 }
 

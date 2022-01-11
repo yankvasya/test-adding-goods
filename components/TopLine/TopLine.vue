@@ -5,7 +5,7 @@ export default {
   name: 'TopLine',
   emits: ['togglerChanged'],
   methods: {
-    changedValue(name) {
+    changedValue (name) {
       this.$emit('togglerChanged', name)
     }
   }

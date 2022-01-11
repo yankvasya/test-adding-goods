@@ -3,7 +3,7 @@
 <script>
 export default {
   name: 'AddingGoods',
-  data() {
+  data () {
     return {
       values: {
         name: { warn: false },
@@ -14,33 +14,33 @@ export default {
     }
   },
   methods: {
-    valueChanged(e) {
+    valueChanged (e) {
       switch (e.target.name) {
         case 'name':
           this.values.name.warn = !e.target.value
-          break;
+          break
         case 'url':
           this.values.url.warn = !e.target.value
-          break;
+          break
         case 'cost':
           this.values.cost.warn = !e.target.value
-          break;
+          break
         default:
-          break;
+          break
       }
     },
-    submitForm(e) {
+    submitForm (e) {
       e.preventDefault()
 
       const data = e.target.elements
       this.createGoods(data)
     },
-    checkFormValues(e) {
+    checkFormValues (e) {
       const { name, url, cost } = e.currentTarget.elements
       const elements = { name, url, cost }
 
       let isValuesEmpty = false
-      for (const [_, input] of Object.entries(elements)) {
+      for (const [, input] of Object.entries(elements)) {
         if (!input.value) {
           isValuesEmpty = true
         }
@@ -48,24 +48,24 @@ export default {
 
       this.isValuesEmpty = isValuesEmpty
     },
-    createGoods({ name, desc, url, cost }) {
+    createGoods ({ name, desc, url, cost }) {
       const date = Date.parse(`${new Date()}`)
 
       const data = {
         name: name.value,
-        cost: cost.value*1,
+        cost: cost.value * 1,
         desc: desc.value,
         url: url.value,
         date
       }
 
       this.$store.commit('goods/addGoods', data)
-      this.clearForm([name,desc,url,cost])
+      this.clearForm([name, desc, url, cost])
       this.isValuesEmpty = true
       this.$emit('addedGoods')
     },
-    clearForm(elements) {
-      for (let element of elements) {
+    clearForm (elements) {
+      for (const element of elements) {
         element.value = ''
       }
     }

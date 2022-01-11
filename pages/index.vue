@@ -21,9 +21,9 @@
 
 <script>
 export default {
-  name: 'Main',
+  name: 'MainPage',
   emits: ['deleteGoods', 'togglerChanged', 'addedGoods'],
-  data() {
+  data () {
     return {
       goods: []
     }
@@ -36,11 +36,20 @@ export default {
       return this.$store.state.goods.filter
     }
   },
+  created () {
+    const data = this.checkLocalStorage() || this.getTestData()
+    this.$store.commit('goods/loadGoods', data)
+    this.$store.commit('goods/defaultList')
+    this.goods = this.stateGoods
+  },
+  updated () {
+    this.updateLocalStorage()
+  },
   methods: {
-    checkLocalStorage() {
+    checkLocalStorage () {
       return JSON.parse(localStorage.getItem('goods'))
     },
-    getTestData() {
+    getTestData () {
       const date = Date.parse(`${new Date()}`)
       return [
         {
@@ -53,7 +62,7 @@ export default {
         }
       ]
     },
-    listChanged() {
+    listChanged () {
       switch (this.filter) {
         case 'default':
           this.$store.commit('goods/defaultList')
@@ -72,18 +81,9 @@ export default {
       }
       this.goods = this.stateGoods
     },
-    updateLocalStorage() {
+    updateLocalStorage () {
       localStorage.setItem('goods', JSON.stringify(this.stateGoods))
     }
-  },
-  created() {
-    const data = this.checkLocalStorage() || this.getTestData()
-    this.$store.commit('goods/loadGoods', data)
-    this.$store.commit('goods/defaultList')
-    this.goods = this.stateGoods
-  },
-  updated() {
-    this.updateLocalStorage()
   }
 }
 </script>
