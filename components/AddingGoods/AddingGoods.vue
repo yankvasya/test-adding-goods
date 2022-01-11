@@ -62,6 +62,7 @@ export default {
       this.$store.commit('goods/addGoods', data)
       this.clearForm([name,desc,url,cost])
       this.isValuesEmpty = true
+      this.$emit('addedGoods')
     },
     clearForm(elements) {
       for (let element of elements) {

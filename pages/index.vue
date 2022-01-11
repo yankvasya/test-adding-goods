@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <TopLine />
+    <TopLine @togglerChanged="listChanged" />
     <main class="main">
-      <AddingGoods />
+      <AddingGoods @addedGoods="listChanged" />
       <GoodsList>
         <Goods
           v-for="({name,cost,desc,url,date}, npx) in goods"
@@ -22,20 +22,23 @@
 <script>
 export default {
   name: 'Main',
-  emits: ['deleteGoods'],
+  emits: ['deleteGoods', 'togglerChanged', 'addedGoods'],
   data() {
     return {
       goods: []
     }
   },
   computed: {
-    defaultGoods () {
+    stateGoods () {
       return this.$store.state.goods.items
+    },
+    filter () {
+      return this.$store.state.goods.filter
     }
   },
   methods: {
     checkLocalStorage() {
-      return JSON.parse(localStorage.getItem('goods'));
+      return JSON.parse(localStorage.getItem('goods'))
     },
     getTestData() {
       const date = Date.parse(`${new Date()}`)
@@ -51,19 +54,33 @@ export default {
       ]
     },
     listChanged() {
-      console.log(this.goods)
-      this.goods = this.defaultGoods
+      switch (this.filter) {
+        case 'cheapFirst':
+          this.$store.commit('goods/cheapFirst')
+          break
+        case 'dearFirst':
+          this.$store.commit('goods/dearFirst')
+          break
+        case 'byName':
+          this.$store.commit('goods/byName')
+          break
+        default:
+          break
+      }
+      this.goods = this.stateGoods
+    },
+    updateLocalStorage() {
+      localStorage.setItem('goods', JSON.stringify(this.stateGoods))
     }
   },
   created() {
     const data = this.checkLocalStorage() || this.getTestData()
-    this.goods = data
     this.$store.commit('goods/loadGoods', data)
+    this.$store.commit('goods/defaultList')
+    this.goods = this.stateGoods
   },
   updated() {
-    const data = JSON.stringify(this.goods)
-    this.listChanged()
-    localStorage.setItem('goods', data)
+    this.updateLocalStorage()
   }
 }
 </script>

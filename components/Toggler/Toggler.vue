@@ -2,7 +2,14 @@
 
 <script>
 export default {
-  name: 'Toggler'
+  name: 'Toggler',
+  methods: {
+    changedValue(e) {
+      const value = e.target.value
+      this.$store.commit('goods/changeFilter', value)
+      this.$emit('togglerChanged', value)
+    }
+  }
 }
 </script>
 

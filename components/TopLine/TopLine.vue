@@ -2,7 +2,13 @@
 
 <script>
 export default {
-  name: 'TopLine'
+  name: 'TopLine',
+  emits: ['togglerChanged'],
+  methods: {
+    changedValue(name) {
+      this.$emit('togglerChanged', name)
+    }
+  }
 }
 </script>
 
