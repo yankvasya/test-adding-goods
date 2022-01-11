@@ -4,11 +4,12 @@
     <label class="field__label">
       <input
         name="name"
-        :class="['field__input', {'required': values.name.warn}]"
+        :class="['field__input', {'required': this.values.name.warn}]"
         type="text"
         placeholder="Введите название товара"
         autocomplete="off"
         @input="valueChanged"
+        @focusout="valueChanged"
       >
     </label>
     <div class="field__error" v-if="values.name.warn">Поле является обязательным</div>
@@ -28,6 +29,8 @@
         type="text"
         placeholder="Введите ссылку"
         autocomplete="off"
+        @input="valueChanged"
+        @focusout="valueChanged"
       >
     </label>
     <div class="field__error" v-if="this.values.url.warn">Поле является обязательным</div>
@@ -41,12 +44,14 @@
         type="number"
         placeholder="Введите цену"
         autocomplete="off"
+        @input="valueChanged"
+        @focusout="valueChanged"
       >
     </label>
     <div class="field__error" v-if="this.values.cost.warn">Поле является обязательным</div>
   </div>
   <button
-    :class="['adding-goods__submit', {'disabled': isValuesEmpty }]"
+    :class="['adding-goods__submit', {'disabled': this.isValuesEmpty }]"
     type="submit"
     :disabled="isValuesEmpty"
   >
