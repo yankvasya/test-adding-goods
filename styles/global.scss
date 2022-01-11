@@ -1,5 +1,9 @@
 html {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+textarea::placeholder, input::placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 html, body, .wrapper {
