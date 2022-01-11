@@ -1,4 +1,5 @@
 # test-adding-goods
+[Текст задания](https://frontend-test.idalite.com/)
 
 ## Build Setup
 
